@@ -1,5 +1,41 @@
+* {
+margin:0;
+padding:0;
+}
+body {
+  background-color: black;
+}
+#kirby {
+	border: 1px solid black;
+	background: rgba(51, 170, 51, .1);
+	position: absolute;
+	border-radius: 30px;
+	top: 331px;
+	left: 627px;
+}
+#bowser {
+	border: 1px solid black;
+	background: rgba(51, 170, 51, .1);
+	position: absolute;
+	border-radius: 30px;
+	top: 195px;
+	left: 185px
+}
+#pokemonRed {
+	border: 1px solid black;
+	background: rgba(51, 170, 51, .1);
+	position: absolute;
+	border-radius: 30px;
+	top: 174px;
+	left: 566px;
+}
 #imageDiv {
   text-align: center;
+}
+#image {
+  width: 780px;
+  border-radius: 30px;
+	margin-top: 70px;
 }
 #tag {
   width: 50px;
@@ -33,4 +69,7 @@
 .dropdownDivs {
   display: flex;
   align-items: center;
+}
+.crossOut {
+	color: red;
 }
