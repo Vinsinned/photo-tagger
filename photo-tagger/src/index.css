@@ -5,6 +5,86 @@ padding:0;
 body {
   background-color: black;
 }
+td {
+	border: 1px solid white;
+}
+#scores {
+	width: 490px;
+	margin: auto;
+	padding: 10px;
+}
+#leaderboard {
+	color: white;
+	border: 1px solid white;
+	width: 500px;
+	height: 400px;
+	text-align: center;
+	border-radius: 5px;
+	position: absolute;
+	margin: auto;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+}
+#test {
+	color: white;
+}
+#winHeader {
+	font-size: 50px;
+	margin-bottom: 20px;
+}
+#warning {
+	color: red;
+	margin-bottom: 40px;
+}
+#errorMessage {
+	color: red;
+	margin-top: 10px;
+}
+#winPara {
+	color: orange;
+}
+#submit {
+	border-radius: 20px;
+	font-size: 30px;
+	border: none;
+	background-color: white;
+	width: 200px;
+	height: 40px;
+	margin-top: 40px;
+}
+#test {
+	color: white;
+}
+#name {
+	text-align: center;
+	border: none;
+	border-radius: 30px;
+	font-size: 30px;
+	padding: 5px 8px 0 14px;
+	height: 50px;
+	display: block;
+	margin: auto;
+}
+#scoreInput {
+	position: absolute;
+	padding-bottom: 30px;
+	margin: auto;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	border-radius: 5px;
+	width: 500px;
+	height: 300px;
+	border: 1px solid white;
+	color: white;
+	text-align: center;
+}
+#timer {
+	color: white;
+}
 #kirby {
 	border: 1px solid black;
 	background: rgba(51, 170, 51, .1);
