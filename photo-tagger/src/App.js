@@ -23,6 +23,8 @@ let intervalId = setInterval(() => {
 }, 1000);
 //remind to click head
 function App() {
+  let preData = [];
+  let [data, setData] = useState([]);
   const db = getFirestore();
   const tellPosition = async (e) => {
     const tag = document.querySelector('#targetBox');
@@ -58,6 +60,36 @@ function App() {
     if (marks === 3) {
       clearInterval(intervalId);
       erase();
+      let stop = [];
+      const minutes = document.querySelector('#minutes');
+      const seconds = document.querySelector('#seconds');
+      const time = minutes.textContent + seconds.textContent;
+      console.log(time)
+      const scoresRef = collection(db, "scoreboard");
+      const q = query(scoresRef, orderBy("time"), limit(15));
+      const querySnapshots = await getDocs(q);
+      querySnapshots.forEach((doc) => {
+        if (parseInt(doc.data()['time']) > time) {
+          console.log('break!');
+          stop.push(1)
+        }
+      });
+      if (stop.length !== 0) {
+        const scoreInput = document.querySelector('#scoreInput');
+        scoreInput.classList.remove('hide');
+      } else {
+        preData = [];
+        const db = getFirestore();
+        const scoresRef = collection(db, "scoreboard");
+        const q = query(scoresRef, orderBy("time"), limit(15));
+        const querySnapshot = await getDocs(q);
+        querySnapshot.forEach((doc) => {
+          preData.push(doc.data());
+        });
+        setData(preData);
+        const leaderboard = document.querySelector('#leaderboard');
+        leaderboard.classList.remove('hide');
+      }
     }
   }
   function erase() {
@@ -73,11 +105,7 @@ function App() {
     dropdown.classList.add('hide');
     const image = document.querySelector('#image');
     image.classList.add('hide');
-    const scoreInput = document.querySelector('#scoreInput');
-    scoreInput.classList.remove('hide');
   }
-  let preData = [];
-  let [data, setData] = useState([]);
   const submit = async () => {
     const minutes = document.querySelector('#minutes').textContent;
     const seconds = document.querySelector('#seconds').textContent;
@@ -91,6 +119,15 @@ function App() {
       error.textContent = 'The name entered is too short!';
     } else {
       const db = getFirestore();
+      preData = [];
+      try {
+        await addDoc(collection(db, `scoreboard`), {
+          name: input.value,
+          time: minutes + seconds,
+        });
+        } catch (e) {
+          console.error("Error adding document: ", e);
+      }
 		  const scoresRef = collection(db, "scoreboard");
 		  const q = query(scoresRef, orderBy("time"), limit(15));
 		  const querySnapshot = await getDocs(q);
@@ -102,14 +139,6 @@ function App() {
       const scoreInput = document.querySelector('#scoreInput');
       scoreInput.classList.add('hide');
       error.textContent = '';
-      try {
-        await addDoc(collection(db, `scoreboard`), {
-          name: input.value,
-          time: minutes + seconds,
-        });
-        } catch (e) {
-          console.error("Error adding document: ", e);
-      }
     }
   }
   return (
