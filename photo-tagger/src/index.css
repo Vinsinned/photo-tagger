@@ -1,12 +1,36 @@
 * {
-margin:0;
-padding:0;
+	margin:0;
+	padding:0;
 }
 body {
   background-color: black;
 }
+#charactersPara {
+	font-size: 30px;
+}
+#characters {
+	position: absolute;
+	border: 1px solid orange;
+	background-color: white;
+	border-top: none;
+	width: 150px;
+	text-align: center;
+	padding-bottom: 10px;
+	border-bottom-left-radius: 25px;
+	border-bottom-right-radius: 25px;
+}
+#timer {
+	font-size: 30px;
+}
 td {
 	border: 1px solid white;
+}
+#navbar {
+	background-color: white;
+	padding: 5px 0px 10px 5px;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
 }
 #scores {
 	width: 490px;
@@ -82,32 +106,29 @@ td {
 	color: white;
 	text-align: center;
 }
-#timer {
-	color: white;
-}
 #kirby {
 	border: 1px solid black;
 	background: rgba(51, 170, 51, .1);
 	position: absolute;
 	border-radius: 30px;
-	top: 331px;
-	left: 627px;
+	top: 384px;
+	left: 625px;
 }
 #bowser {
 	border: 1px solid black;
 	background: rgba(51, 170, 51, .1);
 	position: absolute;
 	border-radius: 30px;
-	top: 195px;
-	left: 185px
+	top: 250px;
+	left: 176px
 }
 #pokemonRed {
 	border: 1px solid black;
 	background: rgba(51, 170, 51, .1);
 	position: absolute;
 	border-radius: 30px;
-	top: 174px;
-	left: 566px;
+	top: 232px;
+	left: 565px;
 }
 #imageDiv {
   text-align: center;

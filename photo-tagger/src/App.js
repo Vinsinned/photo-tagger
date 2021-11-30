@@ -32,6 +32,7 @@ function App() {
     if (tag.classList.contains('hide') === false) {
       let x = e.clientX;
       let y = e.clientY;
+      console.log(x, y)
       tag.style.cssText = `top: ${y - 20}px; left: ${x - 20}px`;
       const querySnapshot = await getDocs(collection(db, "characterPositions"));
       querySnapshot.forEach((doc) => {
@@ -141,8 +142,41 @@ function App() {
       error.textContent = '';
     }
   }
+  const showCharacters = () => {
+    const charactersPara = document.querySelector('#charactersPara');
+    const characters = document.querySelector('#characters');
+    const rect = charactersPara.getBoundingClientRect();
+    characters.style.cssText = `top: ${rect.top + 45}px; left: ${rect.left - 15}px`;
+    characters.classList.remove('hide');
+  }
+  const hideCharacters = () => {
+    const charactersPara = document.querySelector('#charactersPara');
+    const characters = document.querySelector('#characters');
+    characters.classList.add('hide');
+  }
   return (
     <div lang="en">
+      <div id="navbar">
+        <h1>Searching Game</h1>
+        <p id="timer"><span id="minutes"></span>:<span id="seconds"></span></p>
+          <p onMouseOver={showCharacters} onMouseOut={hideCharacters} id="charactersPara">Characters</p>
+      </div>
+      <div id="characters" className="hide">
+        <ul>
+          <div className="characterDivs">
+            <img className="dropdownImage" src="https://upload.wikimedia.org/wikipedia/en/2/2d/SSU_Kirby_artwork.png" alt="kirby"/>
+            <li>Kirby</li>
+          </div>
+          <div className="characterDivs">
+            <img className="dropdownImage" src="https://cdn2.bulbagarden.net/upload/thumb/d/d3/Lets_Go_Pikachu_Eevee_Red.png/250px-Lets_Go_Pikachu_Eevee_Red.png" alt="red"/>
+            <li>Red</li>
+          </div>
+          <div className="characterDivs">
+            <img className="dropdownImage" src="https://upload.wikimedia.org/wikipedia/en/9/92/Bowser_Stock_Art_2021.png" alt="bowser"/>
+            <li>Bowser</li>
+          </div>
+        </ul>
+      </div>
       <Leaderboard array={data} />
       <div id="scoreInput" className="hide">
         <h2 id="winHeader">Congratulations!</h2>
@@ -152,7 +186,6 @@ function App() {
         <p id="errorMessage"></p>
         <button onClick={submit} id="submit">Submit!</button>
       </div>
-      <p id="timer"><span id="minutes"></span>:<span id="seconds"></span></p>
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"/>
       <div className="crossOut material-icons hide" id="kirby">close</div>
