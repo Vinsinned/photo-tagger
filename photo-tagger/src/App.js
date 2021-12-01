@@ -22,6 +22,7 @@ let intervalId = setInterval(() => {
   document.getElementById("minutes").innerHTML=pad(parseInt(sec/60,10));
 }, 1000);
 //remind to click head
+//remind to do better backend
 function App() {
   let preData = [];
   let [data, setData] = useState([]);
