@@ -23,6 +23,7 @@ let intervalId = setInterval(() => {
 }, 1000);
 //remind to click head
 //remind to do better backend
+//LOST MY COMMITS
 function App() {
   let preData = [];
   let [data, setData] = useState([]);
